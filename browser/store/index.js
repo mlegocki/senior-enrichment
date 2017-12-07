@@ -3,10 +3,12 @@ import loggingMiddleware from 'redux-logger'; // https://github.com/evgenyrodion
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import studentsReducer from './students';
+import students from './students';
+import campuses from './campuses';
 
 const rootReducer = combineReducers({
-    students: studentsReducer
+    students,
+    campuses
 });
 
 const composeEnhancers = composeWithDevTools({
@@ -19,3 +21,4 @@ const store = createStore(rootReducer, composeEnhancers(
 export default store;
 
 export * from './students';
+export * from './campuses';

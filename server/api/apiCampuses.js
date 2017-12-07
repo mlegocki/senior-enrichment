@@ -2,7 +2,9 @@ const apiCampuses = require('express').Router();
 const { Campuses } = require('../db/models'); 
 
 apiCampuses.get('/', (req, res, next) => {
-    res.send('CAMPUSES');
+    Campuses.findAll()
+    .then(campuses => res.json(campuses))
+    .catch(next);
 });
 
 apiCampuses.get('/:campusId', (req, res, next) => {

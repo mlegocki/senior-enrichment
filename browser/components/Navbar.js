@@ -12,6 +12,9 @@ export default function Navbar(props) {
             <span>
             <NavLink to="/students">STUDENTS</NavLink>
             </span>
+            <span>
+            <NavLink to="/campuses">CAMPUSES</NavLink>
+            </span>
         </nav>
     );
 }
