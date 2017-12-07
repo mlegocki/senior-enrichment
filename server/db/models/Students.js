@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('../index');
+const db = require('../');
 
 const Students = db.define('students', {
     firstName: {
@@ -27,8 +27,8 @@ const Students = db.define('students', {
     },
     name: {
         type: Sequelize.VIRTUAL,
-        set() {
-            this.setDataValue(this.firstName + ' ' + this.lastName);
+        get() {
+            return this.getDataValue('firstName') + ' ' + this.getDataValue('lastName')
         }
     }
 });

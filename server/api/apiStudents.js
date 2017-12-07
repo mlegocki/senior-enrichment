@@ -1,5 +1,5 @@
 const apiStudents = require('express').Router();
-const Students = require('../db/models/Students');
+const { Students } = require('../db/models');
 
 apiStudents.get('/', (req, res, next) => {
     Students.findAll()
@@ -8,7 +8,12 @@ apiStudents.get('/', (req, res, next) => {
 });
 
 apiStudents.get('/:studentId', (req, res, next) => {
-    res.send('STUDENT ID');
+    Students.findOne({
+        where: 
+        {id: req.params.studentId}
+    })
+    .then(student => res.json(student))
+    .catch(next)
 });
 
 apiStudents.post('/', (req, res, next) => {

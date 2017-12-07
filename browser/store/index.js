@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import studentsReducer from './students';
 
 const rootReducer = combineReducers({
-    studentsReducer
+    students: studentsReducer
 });
 
 const composeEnhancers = composeWithDevTools({

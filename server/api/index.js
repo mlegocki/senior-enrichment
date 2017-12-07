@@ -3,7 +3,7 @@ const apiRouter = require('express').Router();
 const apiStudents = require('./apiStudents');
 const apiCampuses = require('./apiCampuses');
 
-const db = require('../db')
+const db = require('../db/models');
 
 apiRouter.use('/students', apiStudents);
 apiRouter.use('/campuses', apiCampuses);
@@ -18,25 +18,3 @@ module.exports = apiRouter;
 
 
 // You can put all routes in this file; HOWEVER, this file should almost be like a table of contents for the routers you create
-
-/*
-Routes
-
-GET
-- all campuses			DONE
-- a campus by id		DONE
-- all students			DONE
-- a student by id		DONE
-
-POST
-- new campus			DONE
-- new student			DONE
-
-PUT
-- updated student info for one student	DONE
-- updated campus info for one campus	DONE
-
-DELETE
-- a campus				DONE
-- a student				DONE
-*/

@@ -1,5 +1,5 @@
 const apiCampuses = require('express').Router();
-const { Campuses } = require('../db/models/Campuses'); 
+const { Campuses } = require('../db/models'); 
 
 apiCampuses.get('/', (req, res, next) => {
     res.send('CAMPUSES');

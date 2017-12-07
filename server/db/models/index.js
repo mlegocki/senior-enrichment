@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('../index');
+const db = require('../');
 const Students = require('./Students');
 const Campuses = require('./Campuses');
 
@@ -11,8 +11,8 @@ const Campuses = require('./Campuses');
 
 // This is also probably a good place for you to set up your associations
 
-// Campuses.hasMany(Students);
-// Students.belongsTo(Campuses);
+Campuses.hasMany(Students);
+Students.belongsTo(Campuses);
 
 module.exports = {
 	db,

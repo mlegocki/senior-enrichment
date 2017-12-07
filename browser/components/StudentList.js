@@ -4,24 +4,25 @@ import { withRouter, NavLink } from 'react-router-dom';
 import store, { fetchStudents } from '../store';
 
 function StudentList(props) {
+    const { students } = props;
     return (
-        <h1>HELLO</h1>
-        // <ul>
-        //     {
-        //         students.map(student => {
-        //             return (
-        //                 <li key={student.id}>
-        //                     <span> {student.firstName} </span>
-        //                 </li>
-        //             );
-        //         })
-        //     }
-        // </ul>
+        <ul>
+            {
+                students.map(student => {
+                    return (
+                        <NavLink to={`/students/${student.id}`} key={student.id}>
+                        <li>
+                            <span> {student.firstName} </span>
+                        </li>
+                        </NavLink>
+                    );
+                })
+            }
+        </ul>
     );
 }
 
 const mapStateToProps = function (state) {
-    console.log(state);
     return {
         students: state.students
     };
