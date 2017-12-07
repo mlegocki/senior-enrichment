@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import store from '../store';
 
 function StudentPage(props) {
     const { student } = props;
-    console.log(student);
 
     return (
         <div>

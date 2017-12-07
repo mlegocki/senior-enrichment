@@ -30,7 +30,8 @@ export function fetchStudents() {
 }
 
 export function postStudent(student) {
-    return function thunk(dispatch) { 
+    
+    return function thunk(dispatch) {
         return axios.post('/api/students', student)
             .then(response => response.data)
             .then(newStudent => {
@@ -50,7 +51,7 @@ export default function reducer(state = [], action) {
 
         case GET_STUDENT:
             return [...state, action.student];
-            
+
         default:
             return state;
     }

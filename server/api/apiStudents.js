@@ -24,7 +24,6 @@ apiStudents.post('/', (req, res, next) => {
 });
 
 apiStudents.put('/:studentId', (req, res, next) => {
-
     res.send('STUDENT PUT');
 });
 

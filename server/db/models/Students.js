@@ -21,8 +21,8 @@ const Students = db.define('students', {
         type: Sequelize.FLOAT,
         allowNull: false,
         validate: {
-            min: 0.0,
-            max: 4.0
+            min: 0.00,
+            max: 4.00
         }
     },
     name: {
