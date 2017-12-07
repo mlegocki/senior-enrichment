@@ -4,10 +4,14 @@ import store, { fetchStudents, fetchCampuses } from '../store';
 
 import Home from './Home';
 import Navbar from './Navbar';
+
 import StudentList from './StudentList';
 import StudentPage from './StudentPage';
 import StudentCreate from './StudentCreate';
+
 import CampusList from './CampusList';
+import CampusPage from './CampusPage';
+import CampusCreate from './CampusCreate';
 
 export default class Main extends Component {
 
@@ -24,11 +28,14 @@ export default class Main extends Component {
                                 <main>
                                         <Switch>
                                                 <Route exact path="/" component={Home} />
+
                                                 <Route exact path="/students" component={StudentList} />
                                                 <Route path="/students/:studentId" component={StudentPage} />
                                                 <Route path="/new-student" component={StudentCreate} />
+
                                                 <Route exact path="/campuses" component={CampusList} />
                                                 <Route path="/campuses/:campusId" component={CampusPage} />
+                                                <Route path="/new-campus" component={CampusCreate} />
                                         </Switch>
                                 </main>
                         </div>

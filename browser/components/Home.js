@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { withRouter, NavLink } from 'react-router-dom';
-import store from '../store';
+import React from 'react'
 
 export default function Home() {
     return (

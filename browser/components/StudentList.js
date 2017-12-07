@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
-import store, { fetchStudents } from '../store';
 
 function StudentList(props) {
     const { students } = props;

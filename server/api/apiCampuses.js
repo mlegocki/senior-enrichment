@@ -8,11 +8,19 @@ apiCampuses.get('/', (req, res, next) => {
 });
 
 apiCampuses.get('/:campusId', (req, res, next) => {
-    res.send('CAMPUS ID');
+    Campuses.findOne({
+        where: { 
+            id: req.params.campusId
+        }
+    })
+    .then(campus => res.json(campus))
+    .catch(next);
 });
 
 apiCampuses.post('/', (req, res, next) => {
-    res.send('CAMPUS POST');
+    Campuses.create(req.body)
+    .then(campus => res.json(campus))
+    .catch(next);
 });
 
 apiCampuses.put('/:campusId', (req, res, next) => {

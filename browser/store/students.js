@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const GET_STUDENTS = 'GET_STUDENTS';
-const GET_STUDENT = 'GET_STUDENT';
+const ADD_STUDENT = 'ADD_STUDENT';
 
 // ACTION CREATORS
 
@@ -10,8 +10,8 @@ export function getStudents(students) {
     return action;
 }
 
-export function getStudent(student) {
-    const action = { type: GET_STUDENT, student };
+export function addStudent(student) {
+    const action = { type: ADD_STUDENT, student };
     return action;
 }
 
@@ -35,7 +35,7 @@ export function postStudent(student) {
         return axios.post('/api/students', student)
             .then(response => response.data)
             .then(newStudent => {
-                dispatch(getStudent(newStudent));
+                dispatch(addStudent(newStudent));
             });
     }
 }
@@ -49,7 +49,7 @@ export default function reducer(state = [], action) {
         case GET_STUDENTS:
             return action.students;
 
-        case GET_STUDENT:
+        case ADD_STUDENT:
             return [...state, action.student];
 
         default:

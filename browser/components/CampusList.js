@@ -12,20 +12,23 @@ function CampusList(props) {
                         return (
                             <NavLink to={`/campuses/${campus.id}`} key={campus.id}>
                                 <li>
-                                <h4>{campus.name}</h4>
-                                <img src={campus.imageUrl}/>
+                                    <h4>{campus.name}</h4>
+                                    <img src={campus.imageUrl} />
                                 </li>
                             </NavLink>
                         );
                     })
                 }
+                <li>
+                    <NavLink to="/new-campus">Create a new campus entry</NavLink>
+                </li>
             </ul>
         </div>
     )
 }
 
-const mapStateToProps = function (state) { 
-    return { 
+const mapStateToProps = function (state) {
+    return {
         campuses: state.campuses
     };
 };
