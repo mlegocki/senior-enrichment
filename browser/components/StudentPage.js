@@ -10,6 +10,7 @@ function StudentPage(props) {
     return (
         <div>
             <h1>{student.name}</h1>
+            <h5>Attending Campus: </h5>
             <h5>Email: {student.email}</h5>
             <h5>GPA: {student.gpa}</h5>
         </div>

@@ -10,14 +10,17 @@ function StudentList(props) {
             {
                 students.map(student => {
                     return (
-                        <NavLink to={`/students/${student.id}`} key={student.id}>
-                        <li>
-                            <span> {student.firstName} </span>
-                        </li>
-                        </NavLink>
+                            <NavLink to={`/students/${student.id}`} key={student.id}>
+                                <li>
+                                    <span> {student.firstName} </span>
+                                </li>
+                            </NavLink>
                     );
                 })
             }
+            <li>
+            <NavLink to="/new-student">Create a new student entry</NavLink>
+            </li>
         </ul>
     );
 }

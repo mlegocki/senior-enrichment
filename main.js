@@ -1,6 +1,7 @@
 'use strict';
 
-const db = require('./server/db/models').db;
+const { db, Students, Campuses } = require('./server/db/models');
+
 const app = require('./server')
 const PORT = 9999;
 const ft = {force: true};

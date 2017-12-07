@@ -29,17 +29,17 @@ export function fetchStudents() {
     };
 }
 
-export function fetchStudent() {
-
-    return function thunk(dispatch) {
-        return axios.get('/api/students/:studentId')
+export function postStudent(student) {
+    return function thunk(dispatch) { 
+        return axios.post('/api/students', student)
             .then(response => response.data)
-            .then(student => {
-                const action = getStudent(student);
-                dispatch(action);
+            .then(newStudent => {
+                dispatch(getStudent(newStudent));
             });
-    };
+    }
 }
+
+// REDUCER
 
 export default function reducer(state = [], action) {
 
@@ -49,7 +49,7 @@ export default function reducer(state = [], action) {
             return action.students;
 
         case GET_STUDENT:
-            return action.student;
+            return [...state, action.student];
             
         default:
             return state;
