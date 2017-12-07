@@ -5,7 +5,7 @@ import { postStudent } from '../store';
 
 function StudentCreate(props) {
     
-    const { handleSubmit } = props
+    const { campuses, handleSubmit } = props
 
     return (
         <form id="studentForm" onSubmit={handleSubmit}>
@@ -38,8 +38,15 @@ function StudentCreate(props) {
                     placeholder="Enter student's GPA"
                 />
                 <label>Campus Selection</label>
-                <select name="campus">
-                    <option value="BS">Bullshit</option>
+                <select name="campus" required="true">
+                    <option value="" disabled="true" defaultValue="true">Select a campus</option>
+                    {
+                        campuses.map(campus => {
+                            return (
+                                <option key={campus.id}>{campus.name}</option>
+                            );
+                        })
+                    }
                 </select>
             </div>
             <div>
@@ -66,7 +73,7 @@ const mapDispatchToProps = function (dispatch) {
                     lastName: evt.target.lastName.value,
                     email: evt.target.email.value,
                     gpa: evt.target.gpa.value,
-                    // campus: evt.target.campus.value
+                    campus: evt.target.campus.value
                 };
             dispatch(postStudent(newStudent));
             form.reset();
