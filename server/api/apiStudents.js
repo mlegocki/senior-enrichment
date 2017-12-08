@@ -24,7 +24,13 @@ apiStudents.post('/', (req, res, next) => {
 });
 
 apiStudents.put('/:studentId', (req, res, next) => {
-    res.send('STUDENT PUT');
+    Students.findOne({
+        where:
+            { id: req.params.studentId }
+    })
+    .then(student => student.update(req.body))
+    .then(updatedStudent => res.json(updatedStudent))
+    .catch(next);
 });
 
 apiStudents.delete('/:studentId', (req, res, next) => {

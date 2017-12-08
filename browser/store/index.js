@@ -5,10 +5,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import students from './students';
 import campuses from './campuses';
+import listStatus from './listToggle';
 
 const rootReducer = combineReducers({
     students,
-    campuses
+    campuses,
+    listStatus
 });
 
 const composeEnhancers = composeWithDevTools({
@@ -22,3 +24,4 @@ export default store;
 
 export * from './students';
 export * from './campuses';
+export * from './listToggle';

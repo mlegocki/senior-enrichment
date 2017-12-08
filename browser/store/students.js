@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
 
 // ACTION CREATORS
 
@@ -13,6 +14,10 @@ export function getStudents(students) {
 export function addStudent(student) {
     const action = { type: ADD_STUDENT, student };
     return action;
+}
+
+export function updateStudent(updatedStudent) { 
+    const action = { type: UPDATE_STUDENT, updatedStudent}
 }
 
 // THUNK CREATORS
@@ -36,6 +41,17 @@ export function postStudent(student) {
             .then(response => response.data)
             .then(newStudent => {
                 dispatch(addStudent(newStudent));
+            });
+    }
+}
+
+export function putStudent(student) {
+    
+    return function thunk(dispatch) {
+        return axios.post('/api/students', student)
+            .then(response => response.data)
+            .then(updatedStudent => {
+                dispatch(updateStudent(updatedStudent));
             });
     }
 }

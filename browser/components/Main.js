@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import StudentList from './StudentList';
 import StudentPage from './StudentPage';
 import StudentCreate from './StudentCreate';
+import StudentUpdate from './StudentUpdate';
 
 import CampusList from './CampusList';
 import CampusPage from './CampusPage';
@@ -32,6 +33,8 @@ export default class Main extends Component {
                                                 <Route exact path="/students" component={StudentList} />
                                                 <Route path="/students/:studentId" component={StudentPage} />
                                                 <Route path="/new-student" component={StudentCreate} />
+                                                {/* <Route path="/update-student/:studentId" component={StudentUpdate} /> */}
+
 
                                                 <Route exact path="/campuses" component={CampusList} />
                                                 <Route path="/campuses/:campusId" component={CampusPage} />

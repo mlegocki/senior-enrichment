@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { postStudent } from '../store';
 
-function StudentCreate(props) {
+function StudentUpdate(props) {
     
-    const { campuses, handleSubmit } = props
+    const { campus, student } = props
 
     return (
-        <form id="studentForm" onSubmit={handleSubmit}>
+        <form id="studentUpdate" onSubmit={handleSubmit}>
             <div>
                 <label>First Name</label>
                 <input
@@ -50,23 +50,29 @@ function StudentCreate(props) {
                 </select>
             </div>
             <div>
-                <button type="submit">Create student entry</button>
+                <button type="submit">Update student entry</button>
             </div>
         </form>
     );
 }
 
-const mapStateToProps = function (state) {
-    return {
-        campuses: state.campuses
+const mapStateToProps = function (state, ownProps) {
+    
+        const studentId = Number(ownProps.match.params.studentId);
+        const student = state.students.find(student => student.id === studentId)
+        const campus = state.campuses.find(campus => student.campusId === campus.id);
+    
+        return {
+            student,
+            campus
+        };
     };
-};
 
 const mapDispatchToProps = function (dispatch) {
     return {
         handleSubmit(evt) {
             evt.preventDefault();
-            const form = document.getElementById('studentForm');
+            const form = document.getElementById('studentUpdate');
             const newStudent =
                 {
                     firstName: evt.target.firstName.value,
@@ -81,4 +87,4 @@ const mapDispatchToProps = function (dispatch) {
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentCreate));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentUpdate));
