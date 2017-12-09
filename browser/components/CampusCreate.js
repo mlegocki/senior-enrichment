@@ -36,12 +36,6 @@ function CampusCreate(props) {
     )
 }
 
-const mapPropsToState = function (state) {
-    return {
-
-    };
-}
-
 const mapDispatchToState = function (dispatch) {
     return {
         handleSubmit(evt) {
@@ -58,4 +52,4 @@ const mapDispatchToState = function (dispatch) {
     };
 }
 
-export default withRouter(connect(mapPropsToState, mapDispatchToState)(CampusCreate));
+export default withRouter(connect(null, mapDispatchToState)(CampusCreate));

@@ -4,6 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 function StudentList(props) {
     const { students } = props;
+    
     return (
         <ul>
             {
