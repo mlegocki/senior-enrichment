@@ -38,8 +38,8 @@ function StudentCreate(props) {
                     placeholder="Enter student's GPA"
                 />
                 <label>Campus Selection</label>
-                <select name="campus" required="true">
-                    <option value="" disabled="true" selected="selected">Select a campus</option>
+                <select id="campusSelect" name="campus" required="true">
+                    <option name="default" value="" disabled="true" selected>Select a campus</option>
                     {
                         campuses.map(campus => {
                             return (
@@ -62,11 +62,18 @@ const mapStateToProps = function (state) {
     };
 };
 
+const resetOption = function () { 
+    document.getElementById("campusSelect").selectedIndex = 0;
+    return true;
+}
+
 const mapDispatchToProps = function (dispatch) {
+    
     return {
         handleSubmit(evt) {
             evt.preventDefault();
             const form = document.getElementById('studentForm');
+            const campusSelect = document.getElementById('campusSelect');
             const newStudent =
                 {
                     firstName: evt.target.firstName.value,
@@ -77,6 +84,7 @@ const mapDispatchToProps = function (dispatch) {
                 };
             dispatch(postStudent(newStudent));
             form.reset();
+            resetOption();
         }
     };
 };

@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { postStudent } from '../store';
+import { putStudent } from '../store';
 
 function StudentUpdate(props) {
-    
-    const { campus, student } = props
+
+    const { student, campuses, handleSubmit } = props;
 
     return (
         <form id="studentUpdate" onSubmit={handleSubmit}>
@@ -15,18 +15,21 @@ function StudentUpdate(props) {
                     type="text"
                     name="firstName"
                     placeholder="Enter student's first name"
+                    defaultValue={student.firstName}
                 />
                 <label>Last Name</label>
                 <input
                     type="text"
                     name="lastName"
                     placeholder="Enter student's last name"
+                    defaultValue={student.lastName}
                 />
                 <label>Email</label>
                 <input
                     type="email"
                     name="email"
                     placeholder="Enter student's email"
+                    defaultValue={student.email}
                 />
                 <label>GPA</label>
                 <input
@@ -36,15 +39,20 @@ function StudentUpdate(props) {
                     max="4"
                     step="0.01"
                     placeholder="Enter student's GPA"
+                    defaultValue={student.gpa}
                 />
                 <label>Campus Selection</label>
                 <select name="campus" required="true">
-                    <option value="" disabled="true" selected="selected">Select a campus</option>
                     {
                         campuses.map(campus => {
-                            return (
-                                <option key={campus.id} value={campus.id}>{campus.name}</option>
-                            );
+                            if (campus.id === student.campusId) {
+                                return (
+                                    <option key={campus.id} value={campus.id} selected>{campus.name}</option>
+                                )
+                            } else {
+                                return (<option key={campus.id} value={campus.id}>{campus.name}</option>
+                                )
+                            }
                         })
                     }
                 </select>
@@ -57,32 +65,32 @@ function StudentUpdate(props) {
 }
 
 const mapStateToProps = function (state, ownProps) {
-    
-        const studentId = Number(ownProps.match.params.studentId);
-        const student = state.students.find(student => student.id === studentId)
-        const campus = state.campuses.find(campus => student.campusId === campus.id);
-    
-        return {
-            student,
-            campus
-        };
-    };
 
-const mapDispatchToProps = function (dispatch) {
+    const studentId = Number(ownProps.match.params.studentId);
+    const student = state.students.find(student => student.id === studentId);
+    const campuses = state.campuses;
+
+    return {
+        student,
+        campuses
+    };
+};
+
+const mapDispatchToProps = function (dispatch, ownProps) {
+
     return {
         handleSubmit(evt) {
             evt.preventDefault();
-            const form = document.getElementById('studentUpdate');
-            const newStudent =
-                {
+            const updatedStudent =
+                {   
+                    id: Number(ownProps.match.params.studentId),
                     firstName: evt.target.firstName.value,
                     lastName: evt.target.lastName.value,
                     email: evt.target.email.value,
-                    gpa: evt.target.gpa.value,
-                    campusId: evt.target.campus.value
+                    gpa: Number(evt.target.gpa.value),
+                    campusId: Number(evt.target.campus.value)
                 };
-            dispatch(postStudent(newStudent));
-            form.reset();
+            dispatch(putStudent(updatedStudent));
         }
     };
 };

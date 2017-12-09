@@ -33,7 +33,7 @@ export default class Main extends Component {
                                                 <Route exact path="/students" component={StudentList} />
                                                 <Route path="/students/:studentId" component={StudentPage} />
                                                 <Route path="/new-student" component={StudentCreate} />
-                                                {/* <Route path="/update-student/:studentId" component={StudentUpdate} /> */}
+                                                <Route path="/update-student/:studentId" component={StudentUpdate} />
 
 
                                                 <Route exact path="/campuses" component={CampusList} />

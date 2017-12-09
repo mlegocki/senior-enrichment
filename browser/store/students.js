@@ -16,8 +16,8 @@ export function addStudent(student) {
     return action;
 }
 
-export function updateStudent(updatedStudent) { 
-    const action = { type: UPDATE_STUDENT, updatedStudent}
+export function updateStudent(updatedStudent) {
+    const action = { type: UPDATE_STUDENT, updatedStudent }
 }
 
 // THUNK CREATORS
@@ -35,24 +35,24 @@ export function fetchStudents() {
 }
 
 export function postStudent(student) {
-    
+
     return function thunk(dispatch) {
         return axios.post('/api/students', student)
             .then(response => response.data)
-            .then(newStudent => {
-                dispatch(addStudent(newStudent));
-            });
+            .then(newStudent => 
+                dispatch(addStudent(newStudent))
+            );
     }
 }
 
 export function putStudent(student) {
-    
+
     return function thunk(dispatch) {
-        return axios.post('/api/students', student)
+        return axios.put(`/api/students/${student.id}`, student)
             .then(response => response.data)
-            .then(updatedStudent => {
-                dispatch(updateStudent(updatedStudent));
-            });
+            .then(updatedStudent => 
+                 dispatch(updateStudent(updatedStudent))
+            );
     }
 }
 
@@ -67,6 +67,15 @@ export default function reducer(state = [], action) {
 
         case ADD_STUDENT:
             return [...state, action.student];
+
+        case UPDATE_STUDENT:
+            return state.map(student => {
+                if (student.id !== action.updatedStudent.id) {
+                    return student;
+                } else {
+                    return action.updatedStudent;
+                }
+            });
 
         default:
             return state;
