@@ -28,8 +28,10 @@ function CampusList(props) {
 }
 
 const mapStateToProps = function (state) {
+    const { campuses } = state;
+
     return {
-        campuses: state.campuses
+        campuses
     };
 };
 

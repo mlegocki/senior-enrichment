@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { postStudent } from '../store';
 
 function StudentCreate(props) {
-    
+
     const { campuses, handleSubmit } = props
 
     return (
@@ -57,18 +57,19 @@ function StudentCreate(props) {
 }
 
 const mapStateToProps = function (state) {
+    const { campuses } = state
     return {
-        campuses: state.campuses
+        campuses
     };
 };
 
-const resetOption = function () { 
+const resetOption = function () {
     document.getElementById("campusSelect").selectedIndex = 0;
     return true;
 }
 
 const mapDispatchToProps = function (dispatch) {
-    
+
     return {
         handleSubmit(evt) {
             evt.preventDefault();

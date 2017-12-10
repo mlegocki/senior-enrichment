@@ -16,38 +16,41 @@ class CampusPage extends Component {
                 <p>{this.props.campus.description}</p>
                 <button onClick={this.props.handleClick}>List of Students</button>
                 <div>
-                    {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ''}
+                    {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
+                    
                 </div>
+
+                <h1>{this.props.listStatus}</h1>
                 <div>
                     <h3>Edit the campus below:</h3>
-                        <form id="campusUpdate" onSubmit={this.props.handleSubmit}>
-                            <label>Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Enter new campus name"
-                                defaultValue={this.props.campus.name}
-                            />
-                            <label>Campus Image</label>
-                            <input
-                                type="url"
-                                name="imageUrl"
-                                placeholder="Enter a campus image"
-                                defaultValue={this.props.campus.imageUrl}
-                            />
-                            <label>Description</label>
-                            <textarea
-                                type="text"
-                                name="description"
-                                placeholder="Enter a description for the campus"
-                                rows="5"
-                                cols="50"
-                                defaultValue={this.props.campus.description}
-                            />
-                            <div>
-                                <button type="submit">Update campus entry</button>
-                            </div>
-                        </form>
+                    <form id="campusUpdate" onSubmit={this.props.handleSubmit}>
+                        <label>Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter new campus name"
+                            defaultValue={this.props.campus.name}
+                        />
+                        <label>Campus Image</label>
+                        <input
+                            type="url"
+                            name="imageUrl"
+                            placeholder="Enter a campus image"
+                            defaultValue={this.props.campus.imageUrl}
+                        />
+                        <label>Description</label>
+                        <textarea
+                            type="text"
+                            name="description"
+                            placeholder="Enter a description for the campus"
+                            rows="5"
+                            cols="50"
+                            defaultValue={this.props.campus.description}
+                        />
+                        <div>
+                            <button type="submit">Update campus entry</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )
@@ -71,6 +74,7 @@ const mapStateToProps = function (state, ownProps) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
     const campusId = Number(ownProps.match.params.campusId);
+
     return {
         handleClick(evt) {
             evt.preventDefault();
@@ -90,4 +94,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
         }
     }
 }
-    export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CampusPage));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CampusPage));

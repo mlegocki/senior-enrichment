@@ -4,30 +4,31 @@ import { withRouter, NavLink } from 'react-router-dom';
 
 function StudentList(props) {
     const { students } = props;
-    
+
     return (
         <ul>
             {
                 students.map(student => {
                     return (
-                            <NavLink to={`/students/${student.id}`} key={student.id}>
-                                <li>
-                                    <span> {student.firstName} </span>
-                                </li>
-                            </NavLink>
+                        <NavLink to={`/students/${student.id}`} key={student.id}>
+                            <li>
+                                <span> {student.firstName} </span>
+                            </li>
+                        </NavLink>
                     );
                 })
             }
             <li>
-            <NavLink to="/new-student">Create a new student entry</NavLink>
+                <NavLink to="/new-student">Create a new student entry</NavLink>
             </li>
         </ul>
     );
 }
 
 const mapStateToProps = function (state) {
+    const { students } = state
     return {
-        students: state.students
+        students
     };
 };
 

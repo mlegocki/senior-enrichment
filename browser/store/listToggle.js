@@ -35,12 +35,12 @@ export function resetStatus() {
 
 // REDUCER 
 
-export default function reducer(state = false, action) {
+export default function reducer(toggle = false, action) {
 
     switch (action.type) {
 
         case LIST_TOGGLE:
-            if (state === false) {
+            if (toggle === false) {
                 return true;
             } else {
                 return false;
@@ -50,6 +50,6 @@ export default function reducer(state = false, action) {
             return action.reset;
 
         default:
-            return state;
+            return toggle;
     }
 }

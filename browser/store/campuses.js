@@ -49,8 +49,8 @@ export function putCampus(campus) {
     return function thunk(dispatch) {
         return axios.put(`/api/campuses/${campus.id}`, campus)
             .then(response => response.data)
-            .then(updatedCampus => 
-               dispatch(updateCampus(updatedCampus))
+            .then(updatedCampus =>
+                dispatch(updateCampus(updatedCampus))
             );
     }
 }

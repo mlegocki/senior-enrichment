@@ -52,7 +52,7 @@ export function putStudent(student) {
         return axios.put(`/api/students/${student.id}`, student)
             .then(response => response.data)
             .then(updatedStudent =>
-                 dispatch(updateStudent(updatedStudent))
+                dispatch(updateStudent(updatedStudent))
             );
     }
 }
