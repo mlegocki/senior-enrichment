@@ -1,0 +1,95 @@
+.navbar { 
+    background-color: rgb(0, 0, 0);
+}
+
+.nav-item {
+    position: relative;
+    align-self: center;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    top: 4.5px;
+    flex-grow: 100;
+
+}
+
+.nav-logo {
+    align-self: flex-end;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    display: inline-block;
+    max-width: 85px;
+    max-height: 85px;
+    width: auto;
+    height: auto;
+}
+
+.home-title {
+    font-family: Garamond;
+    font-size: 3.5em;
+}
+
+.home-subtitle {
+    font-family: cursive;
+    font-size: 2.5em;
+}
+
+.list-header { 
+    font-size: 2.5em;
+}
+
+.student-list { 
+    font-size: 1.5em;
+}
+
+.campus-list { 
+    font-size: 2em;
+}
+
+#add-student-button { 
+    color: white;
+}
+#add-campus-button {
+    color: white;
+}
+
+.campus-item { 
+    display: block;
+}
+
+.campus-list-image { 
+    max-width: 40px;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+}
+
+p {
+    font-size: 2em;
+}
+
+.info-list {
+    text-decoration: underline;
+}
+
+/* NavLink recoloring below */
+
+NavLink:visited {
+    color: white
+}
+
+NavLink:hover {
+    color: white
+}
+
+NavLink:focus {
+    color: white
+}
+
+NavLink:active {
+    color: white
+}

@@ -6,22 +6,25 @@ function StudentList(props) {
     const { students } = props;
 
     return (
-        <ul>
-            {
-                students.map(student => {
-                    return (
-                        <NavLink to={`/students/${student.id}`} key={student.id}>
-                            <li>
-                                <span> {student.firstName} </span>
-                            </li>
-                        </NavLink>
-                    );
-                })
-            }
-            <li>
-                <NavLink to="/new-student">Create a new student entry</NavLink>
-            </li>
-        </ul>
+        <div>
+            <button type="button" className="btn btn-primary">
+                <NavLink to="/new-student" id="add-student-button">Add New Student</NavLink>
+            </button>
+            <h1 className="list-header">List of Current Students:</h1>
+            <ul>
+                {
+                    students.map(student => {
+                        return (
+                            <NavLink to={`/students/${student.id}`} key={student.id}>
+                                <li className="student-list">
+                                    {student.firstName}
+                                </li>
+                            </NavLink>
+                        );
+                    })
+                }
+            </ul>
+        </div>
     );
 }
 

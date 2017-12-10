@@ -15,8 +15,9 @@ class CampusPage extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.campus.name}</h1>
-                <h5>Number of Students: {this.props.studentsOfCampus.length}</h5>
+                <h1 className="list-header">{this.props.campus.name} Campus</h1>
+                <h3 className="info-list">Number of Students: {this.props.studentsOfCampus.length}</h3>
+                <h3 className="info-list">Description:</h3>
                 <p>{this.props.campus.description}</p>
                 <button onClick={this.props.handleClick}>List of Students</button>
                 <div>

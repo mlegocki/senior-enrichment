@@ -6,22 +6,24 @@ function CampusList(props) {
     const { campuses } = props;
     return (
         <div>
+            <button type="button" className="btn btn-primary">
+                <NavLink to="/new-campus" id="add-campus-button">Add New Campus</NavLink>
+            </button>
+            <h1 className="list-header">List of Campuses:</h1>
             <ul>
                 {
                     campuses.map(campus => {
                         return (
-                            <NavLink to={`/campuses/${campus.id}`} key={campus.id}>
-                                <li>
-                                    <h4>{campus.name}</h4>
-                                    <img src={campus.imageUrl} />
+                            <NavLink to={`/campuses/${campus.id}`} key={campus.id} className="campus-item">
+                                <li className="campus-list">
+                                    {campus.name}
+                                    <img src={campus.imageUrl} className="campus-list-image" />
                                 </li>
                             </NavLink>
                         );
                     })
                 }
-                <li>
-                    <NavLink to="/new-campus">Create a new campus entry</NavLink>
-                </li>
+
             </ul>
         </div>
     )
