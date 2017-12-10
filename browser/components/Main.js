@@ -22,10 +22,13 @@ export default class Main extends Component {
                 store.dispatch(studentsThunk);
                 store.dispatch(campusesThunk);
         }
+
         render() {
+
                 return (
                         <div>
                                 <Navbar />
+
                                 <main>
                                         <Switch>
                                                 <Route exact path="/" component={Home} />
@@ -40,8 +43,8 @@ export default class Main extends Component {
                                                 <Route path="/new-campus" component={CampusCreate} />
                                         </Switch>
                                 </main>
-                        </div>
 
+                        </div>
                 );
         }
 }

@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function CampusList(props) {
+
     const { campuses } = props;
+
     return (
         <div>
+
             <button type="button" className="btn btn-primary">
                 <NavLink to="/new-campus" className="submit-button">Add New Campus</NavLink>
             </button>
@@ -25,13 +28,14 @@ function CampusList(props) {
                 }
 
             </ul>
+
         </div>
     )
 }
 
 const mapStateToProps = function (state) {
     const { campuses } = state;
-
+    
     return {
         campuses
     };

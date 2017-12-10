@@ -1,7 +1,9 @@
 import React from 'react';
 
 export default function StudentsOfCampus(props) {
+
     const { studentsOfCampus } = props;
+
     return (
         <ul>
             {

@@ -13,12 +13,12 @@ function getCampuses(campuses) {
 }
 
 function addCampus(campus) {
-    const action = { type: ADD_CAMPUS, campus }
+    const action = { type: ADD_CAMPUS, campus };
     return action;
 }
 
 function updateCampus(updatedCampus) {
-    const action = { type: UPDATE_CAMPUS, updatedCampus }
+    const action = { type: UPDATE_CAMPUS, updatedCampus };
     return action;
 }
 
@@ -34,10 +34,9 @@ export function fetchCampuses() {
     return function thunk(dispatch) {
         return axios.get('/api/campuses')
             .then(response => response.data)
-            .then(campuses => {
-                const action = getCampuses(campuses);
-                dispatch(action);
-            })
+            .then(campuses =>
+                dispatch(getCampuses(campuses))
+            );
     }
 }
 
@@ -46,7 +45,8 @@ export function postCampus(campus) {
     return function thunk(dispatch) {
         return axios.post('/api/campuses', campus)
             .then(response => response.data)
-            .then(newCampus => dispatch(addCampus(newCampus))
+            .then(newCampus =>
+                dispatch(addCampus(newCampus))
             );
     }
 }

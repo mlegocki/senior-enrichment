@@ -9,6 +9,7 @@ function StudentUpdate(props) {
 
     return (
         <form id="studentUpdate" className="form-group" onSubmit={handleSubmit}>
+
             <div className="form-entry">
                 <label>First Name:</label>
                 <input
@@ -19,6 +20,7 @@ function StudentUpdate(props) {
                     className="form-control"
                 />
             </div>
+
             <div className="form-entry">
                 <label>Last Name:</label>
                 <input
@@ -29,6 +31,7 @@ function StudentUpdate(props) {
                     className="form-control"
                 />
             </div>
+
             <div className="form-entry">
                 <label>Email:</label>
                 <input
@@ -39,6 +42,7 @@ function StudentUpdate(props) {
                     className="form-control"
                 />
             </div>
+
             <div className="form-entry">
                 <label>GPA:</label>
                 <input
@@ -52,6 +56,7 @@ function StudentUpdate(props) {
                     className="form-control"
                 />
             </div>
+
             <div className="form-entry">
                 <label>Campus Selection:</label>
                 <select name="campus" required="true" className="form-control">
@@ -69,15 +74,18 @@ function StudentUpdate(props) {
                     }
                 </select>
             </div>
-        <div>
-            <button type="submit" className="btn btn-primary submit-button">Update student entry</button>
-        </div>
+
+            <div>
+                <button type="submit" className="btn btn-primary">
+                    Update student entry
+                </button>
+            </div>
+
         </form >
     );
 }
 
 const mapStateToProps = function (state, ownProps) {
-
     const studentId = Number(ownProps.match.params.studentId);
     const student = state.students.find(student => student.id === studentId);
     const { campuses } = state;

@@ -40,10 +40,9 @@ export function fetchStudents() {
     return function thunk(dispatch) {
         return axios.get('/api/students')
             .then(response => response.data)
-            .then(students => {
-                const action = getStudents(students);
-                return dispatch(action);
-            });
+            .then(students =>
+                dispatch(getStudents(students))
+            );
     };
 }
 

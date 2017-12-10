@@ -7,10 +7,12 @@ function StudentList(props) {
 
     return (
         <div>
+
             <button type="button" className="btn btn-primary">
                 <NavLink to="/new-student" className="submit-button">Add New Student</NavLink>
             </button>
             <h1 className="list-header">List of Current Students:</h1>
+
             <ul>
                 {
                     students.map(student => {
@@ -24,12 +26,14 @@ function StudentList(props) {
                     })
                 }
             </ul>
+
         </div>
     );
 }
 
 const mapStateToProps = function (state) {
-    const { students } = state
+    const { students } = state;
+
     return {
         students
     };
