@@ -10,12 +10,11 @@ apiStudents.get('/', (req, res, next) => {
 
 apiStudents.get('/:studentId', (req, res, next) => {
     Students.findOne({
-        where:
-            { id: req.params.studentId }
+        where: {
+            id: req.params.studentId
+        }
     })
-        .then(student => {
-            res.json(student)
-        })
+        .then(student => res.json(student))
         .catch(next)
 });
 
@@ -27,12 +26,9 @@ apiStudents.post('/', (req, res, next) => {
 
 apiStudents.put('/:studentId', (req, res, next) => {
     Students.findById(req.params.studentId)
-    .then(student => student.update(req.body))
-    .catch(next);
-});
-
-apiStudents.delete('/:studentId', (req, res, next) => {
-    res.send('STUDENT DELETE');
+        .then(student => student.update(req.body))
+        .then(result => res.json(result))
+        .catch(next);
 });
 
 module.exports = apiStudents;

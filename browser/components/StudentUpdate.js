@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { putStudent, fetchStudents } from '../store';
+import { putStudent, postStudent } from '../store';
 
 function StudentUpdate(props) {
 
@@ -77,17 +77,18 @@ const mapStateToProps = function (state, ownProps) {
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
-
+    const studentId = Number(ownProps.match.params.studentId);
+    
     return {
         handleSubmit(evt) {
             evt.preventDefault();
             const updatedStudent =
                 {   
-                    id: Number(ownProps.match.params.studentId),
+                    id: studentId,
                     firstName: evt.target.firstName.value,
                     lastName: evt.target.lastName.value,
                     email: evt.target.email.value,
-                    gpa: Number(evt.target.gpa.value),
+                    gpa: evt.target.gpa.value,
                     campusId: Number(evt.target.campus.value)
                 };
             dispatch(putStudent(updatedStudent));
