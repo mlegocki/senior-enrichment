@@ -19,7 +19,6 @@ class CampusPage extends Component {
                     {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
                     
                 </div>
-
                 <h1>{this.props.listStatus}</h1>
                 <div>
                     <h3>Edit the campus below:</h3>

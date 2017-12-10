@@ -31,4 +31,10 @@ apiStudents.put('/:studentId', (req, res, next) => {
         .catch(next);
 });
 
+apiStudents.delete('/:studentId', (req, res, next) => {
+    Students.findById(req.params.studentId)
+        .then(student => student.destroy())
+        .then(() => res.status(204).end())
+});
+
 module.exports = apiStudents;

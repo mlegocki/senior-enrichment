@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const DELETE_STUDENT = 'DELETE_STUDENT';
 
 // ACTION CREATORS
 
@@ -18,6 +19,11 @@ function addStudent(student) {
 
 function updateStudent(updatedStudent) {
     const action = { type: UPDATE_STUDENT, updatedStudent };
+    return action;
+}
+
+function deleteStudent(studentId) {
+    const action = { type: DELETE_STUDENT, studentId };
     return action;
 }
 
@@ -57,6 +63,16 @@ export function putStudent(student) {
     }
 }
 
+export function delStudent(studentId) {
+
+    return function thunk(dispatch) {
+        return axios.delete(`/api/students/${studentId}`)
+            .then(() =>
+                dispatch(deleteStudent(studentId))
+            );
+    }
+}
+
 // REDUCER
 
 export default function reducer(students = [], action) {
@@ -71,8 +87,11 @@ export default function reducer(students = [], action) {
 
         case UPDATE_STUDENT:
             return students.map(student => (
-                action.updatedStudent.id === student.id ? action.updatedStudent : student
+                student.id === action.updatedStudent.id  ? action.updatedStudent : student
             ));
+
+        case DELETE_STUDENT:
+            return students.filter(student => student.id !== action.studentId);
 
         default:
             return students;
