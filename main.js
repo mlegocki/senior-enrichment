@@ -4,7 +4,6 @@ const { db, Students, Campuses } = require('./server/db/models');
 
 const app = require('./server')
 const PORT = 9999;
-const ft = {force: true};
 
 db.sync() // if you update your db schemas, make sure you drop the tables first and then recreate them
   .then(() => {

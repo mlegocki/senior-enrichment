@@ -4,6 +4,7 @@ const GET_STUDENTS = 'GET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
+const DELETE_CAMPUS_STUDENTS = 'DELETE_CAMPUS_STUDENTS';
 
 // ACTION CREATORS
 
@@ -27,6 +28,11 @@ function deleteStudent(studentId) {
     return action;
 }
 
+function deleteCampusStudents(deletedCampusId) {
+    const action = { type: DELETE_CAMPUS_STUDENTS, deletedCampusId };
+    return action;
+}
+
 // THUNK CREATORS
 
 export function fetchStudents() {
@@ -46,8 +52,7 @@ export function postStudent(student) {
     return function thunk(dispatch) {
         return axios.post('/api/students', student)
             .then(response => response.data)
-            .then(newStudent =>
-                dispatch(addStudent(newStudent))
+            .then(newStudent => dispatch(addStudent(newStudent))
             );
     }
 }
@@ -73,6 +78,13 @@ export function delStudent(studentId) {
     }
 }
 
+export function delCampusStudents(deletedCampusId) {
+
+    return function thunk(dispatch) {
+        return dispatch(deleteCampusStudents(deletedCampusId));
+    };
+}
+
 // REDUCER
 
 export default function reducer(students = [], action) {
@@ -87,11 +99,14 @@ export default function reducer(students = [], action) {
 
         case UPDATE_STUDENT:
             return students.map(student => (
-                student.id === action.updatedStudent.id  ? action.updatedStudent : student
+                student.id === action.updatedStudent.id ? action.updatedStudent : student
             ));
 
         case DELETE_STUDENT:
             return students.filter(student => student.id !== action.studentId);
+
+        case DELETE_CAMPUS_STUDENTS:
+            return students.filter(student => student.campusId !== action.deletedCampusId);
 
         default:
             return students;

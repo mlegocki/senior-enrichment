@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import store, { listToggle, putCampus } from '../store';
+import { withRouter, NavLink } from 'react-router-dom';
+import store, { listToggle, putCampus, delCampus, delCampusStudents, resetStatus} from '../store';
 import StudentsOfCampus from './StudentsOfCampus';
 
 class CampusPage extends Component {
     constructor() {
         super();
+    }
+    componentWillUnmount() {
+        const resetThunk = resetStatus();
+        store.dispatch(resetThunk);
     }
     render() {
         return (
@@ -17,7 +21,7 @@ class CampusPage extends Component {
                 <button onClick={this.props.handleClick}>List of Students</button>
                 <div>
                     {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
-                    
+
                 </div>
                 <h1>{this.props.listStatus}</h1>
                 <div>
@@ -48,7 +52,14 @@ class CampusPage extends Component {
                         />
                         <div>
                             <button type="submit">Update campus entry</button>
+                            <h3>*WARNING* Deleting a campus will delete all associated student records</h3>
+                            <button onClick={this.props.handleDelete}>
+                                <NavLink to={'/campuses'}>
+                                    DELETE CAMPUS
+                                 </NavLink>
+                            </button>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -90,6 +101,11 @@ const mapDispatchToProps = function (dispatch, ownProps) {
             };
             dispatch(putCampus(updatedCampus));
             form.reset();
+        },
+        handleDelete(evt) {
+            evt.preventDefault();
+            dispatch(delCampus(campusId));
+            dispatch(delCampusStudents(campusId));
         }
     }
 }

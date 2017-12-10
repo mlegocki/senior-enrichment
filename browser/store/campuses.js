@@ -3,6 +3,7 @@ import axios from 'axios';
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const ADD_CAMPUS = 'ADD_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
+const DELETE_CAMPUS = 'DELETE_CAMPUS';
 
 // ACTION CREATORS
 
@@ -18,6 +19,11 @@ function addCampus(campus) {
 
 function updateCampus(updatedCampus) {
     const action = { type: UPDATE_CAMPUS, updatedCampus }
+    return action;
+}
+
+function deleteCampus(campusId) {
+    const action = { type: DELETE_CAMPUS, campusId };
     return action;
 }
 
@@ -40,7 +46,8 @@ export function postCampus(campus) {
     return function thunk(dispatch) {
         return axios.post('/api/campuses', campus)
             .then(response => response.data)
-            .then(newCampus => addCampus(newCampus));
+            .then(newCampus => dispatch(addCampus(newCampus))
+            );
     }
 }
 
@@ -51,6 +58,16 @@ export function putCampus(campus) {
             .then(response => response.data)
             .then(updatedCampus =>
                 dispatch(updateCampus(updatedCampus))
+            );
+    }
+}
+
+export function delCampus(campusId) {
+
+    return function thunk(dispatch) {
+        return axios.delete(`/api/campuses/${campusId}`)
+            .then(() =>
+                dispatch(deleteCampus(campusId))
             );
     }
 }
@@ -71,6 +88,9 @@ export default function reducer(campuses = [], action) {
             return campuses.map(campus => (
                 action.updatedCampus.id === campus.id ? action.updatedCampus : campus
             ));
+
+        case DELETE_CAMPUS:
+            return campuses.filter(campus => campus.id !== action.campusId);
 
         default:
             return campuses;
