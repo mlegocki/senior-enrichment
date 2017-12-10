@@ -4,7 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { delStudent } from '../store'
 
 function StudentPage(props) {
-    const { student, campus, handleDelete } = props;
+    const { student, campus, handleDelete, handleClick } = props;
 
     return (
         <div>
@@ -15,7 +15,11 @@ function StudentPage(props) {
             <h5>
                 <NavLink to={`/update-student/${student.id}`}>Edit this student's information</NavLink>
             </h5>
-            <button onClick={handleDelete}>DELETE STUDENT</button>
+            <button onClick={handleDelete}>
+                <NavLink to={'/students'}>
+                    DELETE STUDENT
+                </NavLink>
+            </button>
         </div>
     );
 }
@@ -34,7 +38,7 @@ const mapStateToProps = function (state, ownProps) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
     const studentId = Number(ownProps.match.params.studentId);
-
+    const btn = document.getElementById('myButton');
     return {
         handleDelete(evt) {
             evt.preventDefault();

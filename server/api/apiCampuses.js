@@ -30,6 +30,12 @@ apiCampuses.put('/:campusId', (req, res, next) => {
         .catch(next);
 });
 
+apiCampuses.delete('/:campusId', (req, res, next) => {
+    Campuses.findById(req.params.campusId)
+        .then(campus => campus.destroy())
+        .then(() => res.end())
+        .catch(next);
+});
 
 
 module.exports = apiCampuses;
