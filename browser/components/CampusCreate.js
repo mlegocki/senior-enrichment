@@ -8,28 +8,37 @@ function CampusCreate(props) {
     return (
         <div>
             <form id="campusForm" onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter new campus name"
-                />
-                <label>Campus Image</label>
-                <input
-                    type="url"
-                    name="imageUrl"
-                    placeholder="Enter a campus image"
-                />
-                <label>Description</label>
-                <textarea
-                    type="text"
-                    name="description"
-                    placeholder="Enter a description for the campus"
-                    rows="5"
-                    cols="50"
-                />
+                <div className="form-entry">
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter new campus name"
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-entry">
+                    <label>Campus Image</label>
+                    <input
+                        type="url"
+                        name="imageUrl"
+                        placeholder="Enter a campus image"
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-entry">
+                    <label>Description</label>
+                    <textarea
+                        type="text"
+                        name="description"
+                        placeholder="Enter a description for the campus"
+                        rows="5"
+                        cols="50"
+                        className="form-control"
+                    />
+                </div>
                 <div>
-                    <button type="submit">Create campus entry</button>
+                    <button type="submit" className="btn btn-primary submit-button">Create campus entry</button>
                 </div>
             </form>
         </div>

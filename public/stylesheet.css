@@ -49,11 +49,9 @@
     font-size: 2em;
 }
 
-#add-student-button { 
+.submit-button {
     color: white;
-}
-#add-campus-button {
-    color: white;
+    margin: 10px;
 }
 
 .campus-item { 
@@ -68,12 +66,38 @@
     margin-left: 10px;
 }
 
-p {
-    font-size: 2em;
+#campus-page-img { 
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    margin: 15px;
 }
 
-.info-list {
+.btn {
+    margin: 10px;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.info-list.in-line {
     text-decoration: underline;
+    margin-right: 7.5px;
+}
+
+.in-line {
+    display: inline-block;
+}
+
+.form-entry {
+    font-size: 1.25em;
+    margin: 10px;
+}
+
+#warning {
+    color: red;
 }
 
 /* NavLink recoloring below */

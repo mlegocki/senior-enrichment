@@ -7,7 +7,7 @@ export default function StudentsOfCampus(props) {
             {
                 studentsOfCampus.map(student => {
                     return (
-                        <li key={student.id}>{student.name}</li>
+                        <li key={student.id} className="student-list">{student.name}</li>
                     );
                 })
             }

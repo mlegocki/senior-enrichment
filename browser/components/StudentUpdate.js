@@ -8,30 +8,39 @@ function StudentUpdate(props) {
     const { student, campuses, handleSubmit } = props;
 
     return (
-        <form id="studentUpdate" onSubmit={handleSubmit}>
-            <div>
-                <label>First Name</label>
+        <form id="studentUpdate" className="form-group" onSubmit={handleSubmit}>
+            <div className="form-entry">
+                <label>First Name:</label>
                 <input
                     type="text"
                     name="firstName"
                     placeholder="Enter student's first name"
                     defaultValue={student.firstName}
+                    className="form-control"
                 />
-                <label>Last Name</label>
+            </div>
+            <div className="form-entry">
+                <label>Last Name:</label>
                 <input
                     type="text"
                     name="lastName"
                     placeholder="Enter student's last name"
                     defaultValue={student.lastName}
+                    className="form-control"
                 />
-                <label>Email</label>
+            </div>
+            <div className="form-entry">
+                <label>Email:</label>
                 <input
                     type="email"
                     name="email"
                     placeholder="Enter student's email"
                     defaultValue={student.email}
+                    className="form-control"
                 />
-                <label>GPA</label>
+            </div>
+            <div className="form-entry">
+                <label>GPA:</label>
                 <input
                     type="number"
                     name="gpa"
@@ -40,9 +49,12 @@ function StudentUpdate(props) {
                     step="0.01"
                     placeholder="Enter student's GPA"
                     defaultValue={student.gpa}
+                    className="form-control"
                 />
-                <label>Campus Selection</label>
-                <select name="campus" required="true">
+            </div>
+            <div className="form-entry">
+                <label>Campus Selection:</label>
+                <select name="campus" required="true" className="form-control">
                     {
                         campuses.map(campus => {
                             if (campus.id === student.campusId) {
@@ -57,10 +69,10 @@ function StudentUpdate(props) {
                     }
                 </select>
             </div>
-            <div>
-                <button type="submit">Update student entry</button>
-            </div>
-        </form>
+        <div>
+            <button type="submit" className="btn btn-primary submit-button">Update student entry</button>
+        </div>
+        </form >
     );
 }
 

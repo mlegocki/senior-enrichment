@@ -8,15 +8,26 @@ function StudentPage(props) {
 
     return (
         <div>
-            <h1>{student.name}</h1>
-            <h5>Attending Campus: {campus.name}</h5>
-            <h5>Email: {student.email}</h5>
-            <h5>GPA: {student.gpa}</h5>
-            <h5>
-                <NavLink to={`/update-student/${student.id}`}>Edit this student's information</NavLink>
-            </h5>
-            <button onClick={handleDelete}>
-                <NavLink to={'/students'}>
+            <div>
+                <h1 className="list-header">{student.name}</h1>
+                <div>
+                    <h3 className="info-list in-line">Attending Campus:</h3>
+                    <h3 className="in-line">{campus.name}</h3>
+                </div>
+                <div>
+                    <h3 className="info-list in-line">Email:</h3>
+                    <h3 className="in-line">{student.email}</h3>
+                </div>
+                <div>
+                    <h3 className="info-list in-line">GPA:</h3>
+                    <h3 className="in-line">{student.gpa}</h3>
+                </div>
+                <h3>
+                    <NavLink to={`/update-student/${student.id}`}>Edit Student's Information</NavLink>
+                </h3>
+            </div>
+            <button className="btn btn-danger" onClick={handleDelete}>
+                <NavLink to={'/students'} className="submit-button">
                     DELETE STUDENT
                 </NavLink>
             </button>

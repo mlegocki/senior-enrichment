@@ -8,7 +8,7 @@ function StudentList(props) {
     return (
         <div>
             <button type="button" className="btn btn-primary">
-                <NavLink to="/new-student" id="add-student-button">Add New Student</NavLink>
+                <NavLink to="/new-student" className="submit-button">Add New Student</NavLink>
             </button>
             <h1 className="list-header">List of Current Students:</h1>
             <ul>

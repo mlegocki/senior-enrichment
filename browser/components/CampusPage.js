@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
-import store, { listToggle, putCampus, delCampus, delCampusStudents, resetStatus} from '../store';
+import store, { listToggle, putCampus, delCampus, delCampusStudents, resetStatus } from '../store';
 import StudentsOfCampus from './StudentsOfCampus';
 
 class CampusPage extends Component {
@@ -16,49 +16,66 @@ class CampusPage extends Component {
         return (
             <div>
                 <h1 className="list-header">{this.props.campus.name} Campus</h1>
-                <h3 className="info-list">Number of Students: {this.props.studentsOfCampus.length}</h3>
+                <h3 className="info-list in-line">Number of Students: </h3>
+                <h3 className="in-line">{this.props.studentsOfCampus.length}</h3>
                 <h3 className="info-list">Description:</h3>
                 <p>{this.props.campus.description}</p>
-                <button onClick={this.props.handleClick}>List of Students</button>
+                <button className="btn btn-primary submit-button" onClick={this.props.handleClick}>List of Students</button>
                 <div>
                     {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
 
                 </div>
+                <img src={this.props.campus.imageUrl} id="campus-page-img" />
                 <h1>{this.props.listStatus}</h1>
                 <div>
                     <h3>Edit the campus below:</h3>
                     <form id="campusUpdate" onSubmit={this.props.handleSubmit}>
-                        <label>Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter new campus name"
-                            defaultValue={this.props.campus.name}
-                        />
-                        <label>Campus Image</label>
-                        <input
-                            type="url"
-                            name="imageUrl"
-                            placeholder="Enter a campus image"
-                            defaultValue={this.props.campus.imageUrl}
-                        />
-                        <label>Description</label>
-                        <textarea
-                            type="text"
-                            name="description"
-                            placeholder="Enter a description for the campus"
-                            rows="5"
-                            cols="50"
-                            defaultValue={this.props.campus.description}
-                        />
+                        <div className="form-entry">
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter new campus name"
+                                defaultValue={this.props.campus.name}
+                                className="form-control"
+                            />
+                        </div>
+                        <div className="form-entry">
+                            <label>Campus Image</label>
+                            <input
+                                type="url"
+                                name="imageUrl"
+                                placeholder="Enter a campus image"
+                                defaultValue={this.props.campus.imageUrl}
+                                className="form-control"
+                            />
+                        </div>
+                        <div className="form-entry">
+                            <label>Description</label>
+                            <textarea
+                                type="text"
+                                name="description"
+                                placeholder="Enter a description for the campus"
+                                rows="5"
+                                cols="50"
+                                defaultValue={this.props.campus.description}
+                                className="form-control"
+                            />
+                        </div>
                         <div>
-                            <button type="submit">Update campus entry</button>
-                            <h3>*WARNING* Deleting a campus will delete all associated student records</h3>
-                            <button onClick={this.props.handleDelete}>
-                                <NavLink to={'/campuses'}>
-                                    DELETE CAMPUS
+                            <div>
+                                <button type="submit" className="btn btn-primary submit-button">Update campus entry</button>
+                            </div>
+                            <h3 id="warning" className="in-line">*WARNING*</h3>
+                            <h3 className="in-line">Deleting a campus will delete all associated student records</h3>
+                            <h3 id="warning" className="in-line">*WARNING*</h3>
+                            <div>
+                                <button type="button" className="btn btn-danger" onClick={this.props.handleDelete}>
+                                    <NavLink to={'/campuses'} className="submit-button">
+                                        DELETE CAMPUS
                                  </NavLink>
-                            </button>
+                                </button>
+                            </div>
                         </div>
 
                     </form>

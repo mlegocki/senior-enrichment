@@ -7,7 +7,7 @@ function CampusList(props) {
     return (
         <div>
             <button type="button" className="btn btn-primary">
-                <NavLink to="/new-campus" id="add-campus-button">Add New Campus</NavLink>
+                <NavLink to="/new-campus" className="submit-button">Add New Campus</NavLink>
             </button>
             <h1 className="list-header">List of Campuses:</h1>
             <ul>
