@@ -31,8 +31,6 @@ export default class Main extends Component {
 
                                 <main>
                                         <Switch>
-                                                <Route exact path="/" component={Home} />
-
                                                 <Route exact path="/students" component={StudentList} />
                                                 <Route path="/students/:studentId" component={StudentPage} />
                                                 <Route path="/new-student" component={StudentCreate} />
@@ -41,6 +39,8 @@ export default class Main extends Component {
                                                 <Route exact path="/campuses" component={CampusList} />
                                                 <Route path="/campuses/:campusId" component={CampusPage} />
                                                 <Route path="/new-campus" component={CampusCreate} />
+
+                                                <Route exact path="/" component={Home} />
                                         </Switch>
                                 </main>
 

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function StudentList(props) {
-    const { students } = props;
+    const { students, handleClick } = props;
 
     return (
         <div>
 
-            <button type="button" className="btn btn-primary">
-                <NavLink to="/new-student" className="submit-button">Add New Student</NavLink>
+            <button type="button" className="btn btn-primary" onClick={handleClick}>
+                Add New Student
             </button>
             <h1 className="list-header">List of Current Students:</h1>
 
@@ -39,4 +39,14 @@ const mapStateToProps = function (state) {
     };
 };
 
-export default withRouter(connect(mapStateToProps)(StudentList));
+const mapDispatchToProps = function (state, ownProps) {
+    const { history } = ownProps;
+
+    return {
+        handleClick(evt) {
+            history.push('/new-student');
+        }
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentList));

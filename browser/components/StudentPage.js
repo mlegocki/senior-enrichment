@@ -14,6 +14,7 @@ function StudentPage(props) {
 
                 <div>
                     <h3 className="info-list in-line">Attending Campus:</h3>
+                    <NavLink to={`/campuses/${campus.id}`}>
                     <h3 className="in-line">{campus.name}</h3>
                 </div>
 
@@ -33,9 +34,7 @@ function StudentPage(props) {
             </div>
 
             <button className="btn btn-danger" onClick={handleDelete}>
-                <NavLink to={'/students'} className="submit-button">
-                    DELETE STUDENT
-                </NavLink>
+                DELETE STUDENT
             </button>
 
         </div>
@@ -56,11 +55,13 @@ const mapStateToProps = function (state, ownProps) {
 const mapDispatchToProps = function (dispatch, ownProps) {
     const studentId = Number(ownProps.match.params.studentId);
     const btn = document.getElementById('myButton');
+    const { history } = ownProps;
 
     return {
         handleDelete(evt) {
             evt.preventDefault();
             dispatch(delStudent(studentId));
+            history.push('/students');
         }
     };
 };

@@ -39,9 +39,9 @@ class CampusPage extends Component {
                 <div>
 
                     <h2>Edit the campus below:</h2>
-                    
+
                     <form id="campusUpdate" onSubmit={this.props.handleSubmit}>
-                        
+
                         <div className="form-entry">
                             <label>Name</label>
                             <input
@@ -89,9 +89,7 @@ class CampusPage extends Component {
 
                             <div>
                                 <button type="button" className="btn btn-danger" onClick={this.props.handleDelete}>
-                                    <NavLink to={'/campuses'} className="submit-button">
-                                        DELETE CAMPUS
-                                 </NavLink>
+                                    DELETE CAMPUS
                                 </button>
                             </div>
 
@@ -112,7 +110,7 @@ const mapStateToProps = function (state, ownProps) {
     const campusId = Number(ownProps.match.params.campusId);
     const campus = state.campuses.find(campus => campus.id === campusId)
     const studentsOfCampus = state.students.filter(student => student.campusId === Number(campusId));
-    const listStatus = state.listStatus;
+    const { listStatus } = state;
 
     return {
         campus,
@@ -124,6 +122,7 @@ const mapStateToProps = function (state, ownProps) {
 const mapDispatchToProps = function (dispatch, ownProps) {
 
     const campusId = Number(ownProps.match.params.campusId);
+    const { history } = ownProps;
 
     return {
         handleClick(evt) {
@@ -144,8 +143,9 @@ const mapDispatchToProps = function (dispatch, ownProps) {
         },
         handleDelete(evt) {
             evt.preventDefault();
-            dispatch(delCampus(campusId));
             dispatch(delCampusStudents(campusId));
+            dispatch(delCampus(campusId));
+            history.push('/campuses');
         }
     }
 };
