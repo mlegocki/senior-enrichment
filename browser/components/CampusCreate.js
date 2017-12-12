@@ -44,7 +44,7 @@ function CampusCreate(props) {
 
             <div>
                 <button type="submit" className="btn btn-primary submit-button">
-                    Create campus entry
+                    Create Campus Entry
                     </button>
             </div>
 

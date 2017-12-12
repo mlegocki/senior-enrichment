@@ -16,6 +16,7 @@ function StudentPage(props) {
                     <h3 className="info-list in-line">Attending Campus:</h3>
                     <NavLink to={`/campuses/${campus.id}`}>
                     <h3 className="in-line">{campus.name}</h3>
+                    </NavLink>
                 </div>
 
                 <div>

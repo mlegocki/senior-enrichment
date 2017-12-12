@@ -27,8 +27,8 @@ export default class Main extends Component {
 
                 return (
                         <div>
+                                
                                 <Navbar />
-
                                 <main>
                                         <Switch>
                                                 <Route exact path="/students" component={StudentList} />

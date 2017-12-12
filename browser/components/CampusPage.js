@@ -92,13 +92,10 @@ class CampusPage extends Component {
                                     DELETE CAMPUS
                                 </button>
                             </div>
-
+                            
                         </div>
-
                     </form>
-
                 </div>
-
             </div>
         )
 

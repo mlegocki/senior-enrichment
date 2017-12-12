@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function StudentsOfCampus(props) {
 
@@ -9,7 +10,9 @@ export default function StudentsOfCampus(props) {
             {
                 studentsOfCampus.map(student => {
                     return (
+                        <NavLink to={`/students/${student.id}`}>
                         <li key={student.id} className="student-list">{student.name}</li>
+                        </NavLink>
                     );
                 })
             }

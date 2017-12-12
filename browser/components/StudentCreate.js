@@ -104,6 +104,7 @@ const mapDispatchToProps = function (dispatch) {
                     campusId: evt.target.campus.value
                 };
             dispatch(postStudent(newStudent));
+            alert('You successfully created a new student!');
             form.reset();
             resetOption();
         }

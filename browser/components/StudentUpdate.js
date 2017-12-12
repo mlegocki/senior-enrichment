@@ -98,6 +98,7 @@ const mapStateToProps = function (state, ownProps) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
     const studentId = Number(ownProps.match.params.studentId);
+    const { history } = ownProps;
 
     return {
         handleSubmit(evt) {
@@ -112,6 +113,7 @@ const mapDispatchToProps = function (dispatch, ownProps) {
                     campusId: Number(evt.target.campus.value)
                 };
             dispatch(putStudent(updatedStudent));
+            history.push('/students');
         }
     };
 };
