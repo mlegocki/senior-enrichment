@@ -11,7 +11,7 @@ export default function StudentsOfCampus(props) {
                 studentsOfCampus.map(student => {
                     return (
                         <NavLink to={`/students/${student.id}`}>
-                        <li key={student.id} className="student-list">{student.name}</li>
+                            <li key={student.id} className="student-list">{student.name}</li>
                         </NavLink>
                     );
                 })

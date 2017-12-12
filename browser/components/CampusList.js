@@ -8,10 +8,11 @@ function CampusList(props) {
 
     return (
         <div>
-
-            <button type="button" className="btn btn-primary" onClick={handleClick}>
-                Add New Campus
-            </button>
+            <div>
+                <button type="button" className="btn btn-primary" onClick={handleClick}>
+                    Add New Campus
+                </button>
+            </div>
             <h1 className="list-header">List of Campuses:</h1>
             <ul>
                 {
@@ -26,7 +27,6 @@ function CampusList(props) {
                         );
                     })
                 }
-
             </ul>
 
         </div>
@@ -35,7 +35,6 @@ function CampusList(props) {
 
 const mapStateToProps = function (state) {
     const { campuses } = state;
-
     return {
         campuses
     };
@@ -43,7 +42,6 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function (state, ownProps) {
     const { history } = ownProps;
-
     return {
         handleClick(evt) {
             history.push('/new-campus');

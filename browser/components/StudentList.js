@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 
 function StudentList(props) {
+    
     const { students, handleClick } = props;
 
     return (
@@ -19,7 +20,7 @@ function StudentList(props) {
                         return (
                             <NavLink to={`/students/${student.id}`} key={student.id}>
                                 <li className="student-list">
-                                    {student.firstName}
+                                    {student.name}
                                 </li>
                             </NavLink>
                         );

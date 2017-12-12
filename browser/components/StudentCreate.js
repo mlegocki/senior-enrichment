@@ -68,28 +68,29 @@ function StudentCreate(props) {
             </div>
 
             <div>
-                <button type="submit" className="btn btn-primary submit-button">Create Student Entry</button>
+                <button type="submit" className="btn btn-primary submit-button">
+                    Create Student Entry
+                </button>
             </div>
 
         </form>
     );
 }
 
+const resetOption = function () {
+    document.getElementById("campusSelect").selectedIndex = 0;
+    return true;
+};
+
 const mapStateToProps = function (state) {
     const { campuses } = state
-
     return {
         campuses
     };
 };
 
-const resetOption = function () {
-    document.getElementById("campusSelect").selectedIndex = 0;
-    return true;
-}
 
 const mapDispatchToProps = function (dispatch) {
-
     return {
         handleSubmit(evt) {
             evt.preventDefault();

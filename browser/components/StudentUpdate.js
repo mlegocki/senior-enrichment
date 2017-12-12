@@ -89,7 +89,6 @@ const mapStateToProps = function (state, ownProps) {
     const studentId = Number(ownProps.match.params.studentId);
     const student = state.students.find(student => student.id === studentId);
     const { campuses } = state;
-
     return {
         student,
         campuses
@@ -99,7 +98,6 @@ const mapStateToProps = function (state, ownProps) {
 const mapDispatchToProps = function (dispatch, ownProps) {
     const studentId = Number(ownProps.match.params.studentId);
     const { history } = ownProps;
-
     return {
         handleSubmit(evt) {
             evt.preventDefault();

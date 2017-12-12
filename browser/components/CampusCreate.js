@@ -45,7 +45,7 @@ function CampusCreate(props) {
             <div>
                 <button type="submit" className="btn btn-primary submit-button">
                     Create Campus Entry
-                    </button>
+                </button>
             </div>
 
         </form>
@@ -53,7 +53,6 @@ function CampusCreate(props) {
 }
 
 const mapDispatchToState = function (dispatch) {
-
     return {
         handleSubmit(evt) {
             evt.preventDefault();
@@ -64,6 +63,7 @@ const mapDispatchToState = function (dispatch) {
                 description: evt.target.description.value
             };
             dispatch(postCampus(newCampus));
+            alert('You successfully created a new campus!');
             form.reset();
         }
     };

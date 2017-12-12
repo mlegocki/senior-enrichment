@@ -27,14 +27,18 @@ class CampusPage extends Component {
                     <p>{this.props.campus.description}</p>
                 </div>
 
-                <button className="btn btn-primary submit-button" onClick={this.props.handleClick}>List of Students</button>
+                <div>
+                    <button className="btn btn-primary submit-button" onClick={this.props.handleClick}>
+                        List of Students
+                    </button>
+                </div>
 
                 <div>
-                    {this.props.listStatus ? <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
+                    {this.props.listStatus ?
+                    <StudentsOfCampus studentsOfCampus={this.props.studentsOfCampus} /> : ""}
                 </div>
 
                 <img src={this.props.campus.imageUrl} id="campus-page-img" />
-                <h1>{this.props.listStatus}</h1>
 
                 <div>
 
@@ -83,32 +87,31 @@ class CampusPage extends Component {
                                 <button type="submit" className="btn btn-primary submit-button">Update campus entry</button>
                             </div>
 
-                            <h3 id="warning" className="in-line">*WARNING*</h3>
-                            <h3 className="in-line">Deleting a campus will delete all associated student records</h3>
-                            <h3 id="warning" className="in-line">*WARNING*</h3>
+                            <div>
+                                <h3 id="warning" className="in-line">*WARNING*</h3>
+                                <h3 className="in-line">Deleting a campus will delete all associated student records</h3>
+                                <h3 id="warning" className="in-line">*WARNING*</h3>
+                            </div>
 
                             <div>
                                 <button type="button" className="btn btn-danger" onClick={this.props.handleDelete}>
                                     DELETE CAMPUS
                                 </button>
                             </div>
-                            
+
                         </div>
                     </form>
                 </div>
             </div>
         )
-
     }
 }
 
 const mapStateToProps = function (state, ownProps) {
-
     const campusId = Number(ownProps.match.params.campusId);
     const campus = state.campuses.find(campus => campus.id === campusId)
     const studentsOfCampus = state.students.filter(student => student.campusId === Number(campusId));
     const { listStatus } = state;
-
     return {
         campus,
         studentsOfCampus,
@@ -117,10 +120,8 @@ const mapStateToProps = function (state, ownProps) {
 };
 
 const mapDispatchToProps = function (dispatch, ownProps) {
-
     const campusId = Number(ownProps.match.params.campusId);
     const { history } = ownProps;
-
     return {
         handleClick(evt) {
             evt.preventDefault();
